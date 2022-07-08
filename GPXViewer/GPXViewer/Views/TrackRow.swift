@@ -8,17 +8,35 @@
 import SwiftUI
 import MapKit
 
+extension Track {
+  var dateDescription: String {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .medium
+    return formatter.string(from: startDate)
+  }
+}
+
 struct TrackRow: View {
   var track: Track
   @EnvironmentObject var trackStore: ServiceDataSource
   var body: some View {
     VStack {
-      Text(track.title)
-        .padding()
-        .frame(alignment: .leading)
+      HStack {
+        Text(track.title)
+          .font(.headline)
+          .fixedSize(horizontal: false, vertical: true)
+        Spacer()
+      }
+      HStack {
+        Text(track.dateDescription).font(.body)
+        Spacer()
+      }
       MapBoxMapView(track: track, trackStore: trackStore)
         .frame(width: nil, height: 300, alignment: .center)
+    }.alignmentGuide(.leading) { x in
+      return 5
     }
+    
   }
 }
 
