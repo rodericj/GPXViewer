@@ -59,8 +59,3 @@ private extension Track {
   }
 }
 
-extension Track {
-  static var testTrack: Track {
-    Track()
-  }
-}

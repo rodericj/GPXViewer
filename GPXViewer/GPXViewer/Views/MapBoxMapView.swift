@@ -47,33 +47,8 @@ class MapViewController: UIViewController {
     fatalError("init(coder:) has not been implemented")
   }
 
+  let converter = GeoJsonConverter()
 
-  private func parseGeoJson(from data: Data) {
-    let mapkitDecoder = MKGeoJSONDecoder()
-    do {
-      let geoJson = try mapkitDecoder.decode(data) as? [MKGeoJSONFeature]
-      guard let geometry = geoJson?.first?.geometry.first else {
-        throw LoadingError.noGeometryDetected
-      }
-
-      guard let polyline = geometry as? MKPolyline else {
-        throw LoadingError.notAPolyline
-      }
-      guard let mapkitView = mapkitView else {
-        return
-      }
-      mapkitView.addOverlay(polyline)
-      guard let initial = mapkitView.overlays.first?.boundingMapRect else { return }
-      let mapRect = mapkitView.overlays
-        .dropFirst()
-        .reduce(initial) { $0.union($1.boundingMapRect) }
-      let inset = 50.0
-      let insets = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
-      mapkitView.setVisibleMapRect(mapRect, edgePadding: insets, animated: false)
-    } catch {
-      print("caught an error while parsing the data \(error)")
-    }
-  }
   private func loadGeoJSONLayer() throws {
     try trackStore.fetchGeojson(for: track) { data in
       switch data {
@@ -81,7 +56,13 @@ class MapViewController: UIViewController {
 #if USEMAPBOX // to utilize this set -DUSEMAPBOX in Build Settings called "Other Swift Flags" Under Swift Compiler Custom Flags
         self.parseGeoJsonForMapbox(from: data)
 #else
-        self.parseGeoJson(from: data)
+        do {
+          let polyline = try self.converter.parseGeoJson(from: data)
+          self.mapkitView?.add(polyline: polyline)
+        } catch {
+          print("unable to convert geojson to polyline")
+        }
+
 #endif
       case .failure(let error):
         print("display error \(error)")

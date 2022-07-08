@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		5F62C23728773BF200C56229 /* MapBoxMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F62C23628773BF200C56229 /* MapBoxMapView.swift */; };
 		5FA50024286A114A00CA71AA /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 5FA50023286A114A00CA71AA /* MapboxMaps */; };
+		5FC555B72878B78800A62E97 /* ServiceDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC555B62878B78800A62E97 /* ServiceDataSource.swift */; };
+		5FC555BA2878BE5100A62E97 /* MKMapKit+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC555B92878BE5100A62E97 /* MKMapKit+Helpers.swift */; };
+		5FC555BC2878BE7300A62E97 /* GeoJsonConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC555BB2878BE7300A62E97 /* GeoJsonConverter.swift */; };
 		5FDCAB872869E85D00CCC37D /* GPXViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDCAB862869E85D00CCC37D /* GPXViewerApp.swift */; };
 		5FDCAB892869E85D00CCC37D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDCAB882869E85D00CCC37D /* ContentView.swift */; };
 		5FDCAB8B2869E86000CCC37D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FDCAB8A2869E86000CCC37D /* Assets.xcassets */; };
@@ -41,6 +44,9 @@
 
 /* Begin PBXFileReference section */
 		5F62C23628773BF200C56229 /* MapBoxMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBoxMapView.swift; sourceTree = "<group>"; };
+		5FC555B62878B78800A62E97 /* ServiceDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDataSource.swift; sourceTree = "<group>"; };
+		5FC555B92878BE5100A62E97 /* MKMapKit+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapKit+Helpers.swift"; sourceTree = "<group>"; };
+		5FC555BB2878BE7300A62E97 /* GeoJsonConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoJsonConverter.swift; sourceTree = "<group>"; };
 		5FDCAB832869E85D00CCC37D /* GPXViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPXViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FDCAB862869E85D00CCC37D /* GPXViewerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXViewerApp.swift; sourceTree = "<group>"; };
 		5FDCAB882869E85D00CCC37D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -90,6 +96,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5FC555B82878BE3C00A62E97 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5FC555B92878BE5100A62E97 /* MKMapKit+Helpers.swift */,
+				5FC555BB2878BE7300A62E97 /* GeoJsonConverter.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		5FDCAB7A2869E85D00CCC37D = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +129,7 @@
 		5FDCAB852869E85D00CCC37D /* GPXViewer */ = {
 			isa = PBXGroup;
 			children = (
+				5FC555B82878BE3C00A62E97 /* Helpers */,
 				5FDCAB862869E85D00CCC37D /* GPXViewerApp.swift */,
 				5FDCABB22869E98E00CCC37D /* Models */,
 				5FDCABB82869EB1D00CCC37D /* Views */,
@@ -152,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				5FDCABB32869E99A00CCC37D /* Track.swift */,
+				5FC555B62878B78800A62E97 /* ServiceDataSource.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -308,9 +325,12 @@
 				5FDCABBA2869EB7100CCC37D /* TrackRow.swift in Sources */,
 				5FDCAB892869E85D00CCC37D /* ContentView.swift in Sources */,
 				5F62C23728773BF200C56229 /* MapBoxMapView.swift in Sources */,
+				5FC555B72878B78800A62E97 /* ServiceDataSource.swift in Sources */,
 				5FDCAB872869E85D00CCC37D /* GPXViewerApp.swift in Sources */,
+				5FC555BA2878BE5100A62E97 /* MKMapKit+Helpers.swift in Sources */,
 				5FDCABB12869E8FE00CCC37D /* GPXTrackList.swift in Sources */,
 				5FDCABB42869E99A00CCC37D /* Track.swift in Sources */,
+				5FC555BC2878BE7300A62E97 /* GeoJsonConverter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
