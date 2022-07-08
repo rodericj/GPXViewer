@@ -32,7 +32,6 @@ class MapViewController: UIViewController {
   private var mapView: MapView?
   private var mapkitView: MKMapView?
   private let track: Track
-  private var source = GeoJSONSource()
 
   private let trackStore: ServiceDataSource
   private let delegate = MapViewDelegate()
@@ -54,7 +53,7 @@ class MapViewController: UIViewController {
       switch data {
       case .success(let data):
 #if USEMAPBOX // to utilize this set -DUSEMAPBOX in Build Settings called "Other Swift Flags" Under Swift Compiler Custom Flags
-        self.parseGeoJsonForMapbox(from: data)
+        self.mapView?.parseGeoJsonForMapbox(from: data)
 #else
         do {
           let polyline = try self.converter.parseGeoJson(from: data)
@@ -70,55 +69,7 @@ class MapViewController: UIViewController {
     }
   }
 
-  func parseGeoJsonForMapbox(from data: Data) {
-    let decoder = JSONDecoder()
-    do {
-      let json = try decoder.decode(GeoJsonResponse.self, from: data)
 
-      guard let mapView = mapView else {
-        return
-      }
-
-      let dataSet = json.features.first?.geometry.coordinates.map({ coords -> [CLLocationDegrees] in
-        [CLLocationDegrees(coords.first!), CLLocationDegrees(coords.last!)]
-      }).map({ coords -> LocationCoordinate2D in
-        LocationCoordinate2D(latitude: coords.first!, longitude: coords.last!)
-      })
-
-      guard let dataSet = dataSet else {
-        print("no data set")
-        return
-      }
-
-      let lineString = LineString(dataSet)
-      source.data = .geometry(.lineString(lineString))
-
-      // Add the source to the mapView
-      // Specify a unique string as the source ID (SOURCE_ID)
-      // and reference the location of source data
-      let sourceIDString = UUID().uuidString
-      let layerIDString = UUID().uuidString
-
-      var lineLayer = LineLayer(id: layerIDString)
-
-      lineLayer.source = sourceIDString
-
-      // Add the line layer to the mapView
-      try mapView.mapboxMap.style.addLayer(lineLayer)
-      if (mapView.mapboxMap.style.styleManager.isStyleLoaded()) {
-        print("loaded")
-      } else {
-        print("not loaded")
-      }
-
-      try mapView.mapboxMap.style.addSource(source, id: sourceIDString)
-      // Make the line layer
-      // Specify a unique string as the layer ID (LAYER_ID)
-      // and reference the source ID (SOURCE_ID) added above.
-    } catch {
-      print("error with mapbox data \(error)")
-    }
-  }
 
   override public func viewDidLoad() {
     super.viewDidLoad()
