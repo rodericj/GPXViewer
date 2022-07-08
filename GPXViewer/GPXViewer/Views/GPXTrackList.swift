@@ -18,7 +18,7 @@ struct GPXTrackList: View {
   }
 }
 
-extension Track {
+private extension Track {
   init(name: String) {
     self.title = name
     self.maxLatitude = 0
