@@ -11,7 +11,6 @@ struct ContentView: View {
   let dataSource: ServiceDataSource
     var body: some View {
       GPXTrackList(trackStore: dataSource)
-            .padding()
     }
 }
 

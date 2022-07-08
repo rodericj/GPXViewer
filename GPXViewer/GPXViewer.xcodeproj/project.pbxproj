@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F62C23728773BF200C56229 /* MapBoxMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F62C23628773BF200C56229 /* MapBoxMapView.swift */; };
+		5FA50024286A114A00CA71AA /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 5FA50023286A114A00CA71AA /* MapboxMaps */; };
 		5FDCAB872869E85D00CCC37D /* GPXViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDCAB862869E85D00CCC37D /* GPXViewerApp.swift */; };
 		5FDCAB892869E85D00CCC37D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDCAB882869E85D00CCC37D /* ContentView.swift */; };
 		5FDCAB8B2869E86000CCC37D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FDCAB8A2869E86000CCC37D /* Assets.xcassets */; };
@@ -38,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F62C23628773BF200C56229 /* MapBoxMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBoxMapView.swift; sourceTree = "<group>"; };
 		5FDCAB832869E85D00CCC37D /* GPXViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPXViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FDCAB862869E85D00CCC37D /* GPXViewerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXViewerApp.swift; sourceTree = "<group>"; };
 		5FDCAB882869E85D00CCC37D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FA50024286A114A00CA71AA /* MapboxMaps in Frameworks */,
 				5FDCABB72869EAD000CCC37D /* DataFetch in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,6 +83,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5FA50022286A114A00CA71AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5FDCAB7A2869E85D00CCC37D = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +97,7 @@
 				5FDCAB962869E86000CCC37D /* GPXViewerTests */,
 				5FDCABA02869E86000CCC37D /* GPXViewerUITests */,
 				5FDCAB842869E85D00CCC37D /* Products */,
+				5FA50022286A114A00CA71AA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -148,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				5FDCAB882869E85D00CCC37D /* ContentView.swift */,
+				5F62C23628773BF200C56229 /* MapBoxMapView.swift */,
 				5FDCABB02869E8FE00CCC37D /* GPXTrackList.swift */,
 				5FDCABB92869EB7100CCC37D /* TrackRow.swift */,
 			);
@@ -172,6 +185,7 @@
 			name = GPXViewer;
 			packageProductDependencies = (
 				5FDCABB62869EAD000CCC37D /* DataFetch */,
+				5FA50023286A114A00CA71AA /* MapboxMaps */,
 			);
 			productName = GPXViewer;
 			productReference = 5FDCAB832869E85D00CCC37D /* GPXViewer.app */;
@@ -247,6 +261,7 @@
 			mainGroup = 5FDCAB7A2869E85D00CCC37D;
 			packageReferences = (
 				5FDCABB52869EAD000CCC37D /* XCRemoteSwiftPackageReference "DataFetch" */,
+				5FDCABBB2869FF7D00CCC37D /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */,
 			);
 			productRefGroup = 5FDCAB842869E85D00CCC37D /* Products */;
 			projectDirPath = "";
@@ -292,6 +307,7 @@
 			files = (
 				5FDCABBA2869EB7100CCC37D /* TrackRow.swift in Sources */,
 				5FDCAB892869E85D00CCC37D /* ContentView.swift in Sources */,
+				5F62C23728773BF200C56229 /* MapBoxMapView.swift in Sources */,
 				5FDCAB872869E85D00CCC37D /* GPXViewerApp.swift in Sources */,
 				5FDCABB12869E8FE00CCC37D /* GPXTrackList.swift in Sources */,
 				5FDCABB42869E99A00CCC37D /* Track.swift in Sources */,
@@ -465,7 +481,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.thumbworks.carryoutexperience.GPXViewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -494,7 +510,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.thumbworks.carryoutexperience.GPXViewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -629,9 +645,22 @@
 				kind = branch;
 			};
 		};
+		5FDCABBB2869FF7D00CCC37D /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:mapbox/mapbox-maps-ios.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5FA50023286A114A00CA71AA /* MapboxMaps */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5FDCABBB2869FF7D00CCC37D /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */;
+			productName = MapboxMaps;
+		};
 		5FDCABB62869EAD000CCC37D /* DataFetch */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5FDCABB52869EAD000CCC37D /* XCRemoteSwiftPackageReference "DataFetch" */;

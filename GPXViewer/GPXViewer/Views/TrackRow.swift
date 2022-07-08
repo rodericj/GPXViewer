@@ -10,14 +10,14 @@ import MapKit
 
 struct TrackRow: View {
   var track: Track
-  @Binding var region: MKCoordinateRegion = MKCoordinateRegion(center: .init(latitude: 1, longitude: 1), latitudinalMeters: 100, longitudinalMeters: 100)
+//  @Binding var region: MKCoordinateRegion = MKCoordinateRegion(center: .init(latitude: 1, longitude: 1), latitudinalMeters: 100, longitudinalMeters: 100)
   var body: some View {
     VStack {
       Text(track.title)
-      Text("map placeholder")
         .padding()
-        .background(Color.blue)
-      Map(coordinateRegion: $region, annotationItems: <#T##RandomAccessCollection#>, annotationContent: <#T##(Identifiable) -> MapAnnotationProtocol#>)
+        .frame(alignment: .leading)
+      MapBoxMapView(track: track)
+        .frame(width: nil, height: 300, alignment: .center)
     }
   }
 }
