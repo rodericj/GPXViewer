@@ -48,3 +48,16 @@ extension MapView {
     }
   }
 }
+
+struct GeoJsonResponse: Codable {
+  struct Feature: Codable {
+    struct Geometry: Codable {
+      var type: String = "LineString"
+      let coordinates: [[Double]]
+    }
+    var type: String = "Feature"
+    let geometry: Geometry
+  }
+  var type: String = "FeatureCollection"
+  let features: [Feature]
+}

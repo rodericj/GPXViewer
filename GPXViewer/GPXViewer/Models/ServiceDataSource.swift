@@ -1,6 +1,12 @@
 import DataFetch
 import SwiftUI
 
+enum LoadingError: Error {
+  case invalidURL
+  case noGeometryDetected
+  case notAPolyline
+}
+
 class ServiceDataSource: ObservableObject {
   struct TracksPayload: Decodable {
     let items: [Track]

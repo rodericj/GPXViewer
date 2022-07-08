@@ -13,6 +13,7 @@
 		5FC555BA2878BE5100A62E97 /* MKMapKit+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC555B92878BE5100A62E97 /* MKMapKit+Helpers.swift */; };
 		5FC555BC2878BE7300A62E97 /* GeoJsonConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC555BB2878BE7300A62E97 /* GeoJsonConverter.swift */; };
 		5FC555C02878BF7D00A62E97 /* MapView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC555BF2878BF7D00A62E97 /* MapView+Helpers.swift */; };
+		5FC555C22878C01600A62E97 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC555C12878C01600A62E97 /* MapViewController.swift */; };
 		5FDCAB872869E85D00CCC37D /* GPXViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDCAB862869E85D00CCC37D /* GPXViewerApp.swift */; };
 		5FDCAB892869E85D00CCC37D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDCAB882869E85D00CCC37D /* ContentView.swift */; };
 		5FDCAB8B2869E86000CCC37D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FDCAB8A2869E86000CCC37D /* Assets.xcassets */; };
@@ -49,6 +50,7 @@
 		5FC555B92878BE5100A62E97 /* MKMapKit+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapKit+Helpers.swift"; sourceTree = "<group>"; };
 		5FC555BB2878BE7300A62E97 /* GeoJsonConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoJsonConverter.swift; sourceTree = "<group>"; };
 		5FC555BF2878BF7D00A62E97 /* MapView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapView+Helpers.swift"; sourceTree = "<group>"; };
+		5FC555C12878C01600A62E97 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		5FDCAB832869E85D00CCC37D /* GPXViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPXViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FDCAB862869E85D00CCC37D /* GPXViewerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXViewerApp.swift; sourceTree = "<group>"; };
 		5FDCAB882869E85D00CCC37D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 			children = (
 				5FDCAB882869E85D00CCC37D /* ContentView.swift */,
 				5F62C23628773BF200C56229 /* MapBoxMapView.swift */,
+				5FC555C12878C01600A62E97 /* MapViewController.swift */,
 				5FDCABB02869E8FE00CCC37D /* GPXTrackList.swift */,
 				5FDCABB92869EB7100CCC37D /* TrackRow.swift */,
 			);
@@ -325,6 +328,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FC555C22878C01600A62E97 /* MapViewController.swift in Sources */,
 				5FDCABBA2869EB7100CCC37D /* TrackRow.swift in Sources */,
 				5FC555C02878BF7D00A62E97 /* MapView+Helpers.swift in Sources */,
 				5FDCAB892869E85D00CCC37D /* ContentView.swift in Sources */,
