@@ -10,13 +10,13 @@ import MapKit
 
 struct TrackRow: View {
   var track: Track
-//  @Binding var region: MKCoordinateRegion = MKCoordinateRegion(center: .init(latitude: 1, longitude: 1), latitudinalMeters: 100, longitudinalMeters: 100)
+  @EnvironmentObject var trackStore: ServiceDataSource
   var body: some View {
     VStack {
       Text(track.title)
         .padding()
         .frame(alignment: .leading)
-      MapBoxMapView(track: track)
+      MapBoxMapView(track: track, trackStore: trackStore)
         .frame(width: nil, height: 300, alignment: .center)
     }
   }

@@ -10,11 +10,13 @@ import SwiftUI
 @main
 struct GPXViewerApp: App {
   let dataSource = ServiceDataSource()
-    var body: some Scene {
-        WindowGroup {
-          ContentView(dataSource: dataSource).onAppear {
-            dataSource.fetch()
-          }
+  var body: some Scene {
+    WindowGroup {
+      ContentView()
+        .environmentObject(dataSource)
+        .onAppear {
+          dataSource.fetch()
         }
     }
+  }
 }

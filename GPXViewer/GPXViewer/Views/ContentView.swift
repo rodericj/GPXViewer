@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
-  let dataSource: ServiceDataSource
     var body: some View {
-      GPXTrackList(trackStore: dataSource)
+      GPXTrackList()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-      ContentView(dataSource: ServiceDataSource())
+      ContentView().environmentObject(ServiceDataSource())
     }
 }
