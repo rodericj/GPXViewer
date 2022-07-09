@@ -7,16 +7,21 @@ enum LoadingError: Error {
   case notAPolyline
 }
 
+enum TrackState {
+    case loaded([Track])
+    case loading
+    case error(Error)
+}
 class ServiceDataSource: ObservableObject {
   struct TracksPayload: Decodable {
     let items: [Track]
   }
-  @Published var tracks: [Track]
+  @Published var trackState: TrackState
   @Published var trackData: [UUID : Data] = [:]
 
   private let fetcher = DataFetcher()
   init() {
-    tracks = []
+      trackState = .loading
   }
 
   func fetchGeojson(for track: Track, completion: @escaping (Result<Data, Error>) -> ()) throws {
@@ -51,9 +56,10 @@ class ServiceDataSource: ObservableObject {
 
       case .success(let payload):
         DispatchQueue.main.async {
-          self.tracks = payload.items
+            self.trackState = .loaded(payload.items)
         }
       case .failure(let error):
+          self.trackState = .error(error)
         print("error \(error)")
       }
     }

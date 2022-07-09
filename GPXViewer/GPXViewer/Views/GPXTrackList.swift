@@ -11,10 +11,17 @@ struct GPXTrackList: View {
   @EnvironmentObject var trackStore: ServiceDataSource
   
   var body: some View {
-    List(trackStore.tracks) { track in
-      TrackRow(track: track)
-        .cornerRadius(10)
-    }
+      switch(trackStore.trackState) {
+      case .loaded(let tracks):
+          List(tracks) { track in
+            TrackRow(track: track)
+              .cornerRadius(10)
+          }
+      case .loading:
+          Text("Loading")
+      case .error(let error):
+          Text("Error loading \(error.localizedDescription)")
+      }
   }
 }
 
@@ -35,8 +42,8 @@ struct GPXTrackList_Previews: PreviewProvider {
     let serviceDataSource = ServiceDataSource()
     let track1 = Track(name: "test Track 1")
     let track2 = Track(name: "test Track 2")
-    serviceDataSource.tracks.append(track1)
-    serviceDataSource.tracks.append(track2)
+    let tracks = [track1, track2]
+    serviceDataSource.trackState = .loaded(tracks)
     return serviceDataSource
   }()
   static var previews: some View {
