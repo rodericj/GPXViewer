@@ -9,14 +9,14 @@ import SwiftUI
 
 @main
 struct GPXViewerApp: App {
-  let dataSource = ServiceDataSource()
-  var body: some Scene {
-    WindowGroup {
-      ContentView()
-        .environmentObject(dataSource)
-        .onAppear {
-          dataSource.fetch()
+    let dataSource = ServiceDataSource()
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+                .environmentObject(dataSource)
+                .onAppear {
+                    dataSource.fetch()
+                }
         }
     }
-  }
 }
