@@ -1,9 +1,15 @@
-import MapKit
+#if USEMAPBOX
 import MapboxMaps
+#else
+import MapKit
+#endif
 
 class MapViewController: UIViewController {
+#if USEMAPBOX
   private var mapView: MapView?
+#else
   private var mapkitView: MKMapView?
+#endif
   private let track: Track
 
   private let trackStore: ServiceDataSource
@@ -21,26 +27,27 @@ class MapViewController: UIViewController {
 
   let converter = GeoJsonConverter()
 
-  private func loadGeoJSONLayer() throws {
-    try trackStore.fetchGeojson(for: track) { data in
-      switch data {
-      case .success(let data):
+    private func loadGeoJSONLayer() throws {
+        try trackStore.fetchGeojson(for: track) { data in
+            DispatchQueue.main.async {
+                switch data {
+                case .success(let data):
 #if USEMAPBOX // to utilize this set -DUSEMAPBOX in Build Settings called "Other Swift Flags" Under Swift Compiler Custom Flags
-        self.mapView?.parseGeoJsonForMapbox(from: data)
+                    self.mapView?.parseGeoJsonForMapbox(from: data)
 #else
-        do {
-          let polyline = try self.converter.parseGeoJson(from: data)
-          self.mapkitView?.add(polyline: polyline)
-        } catch {
-          print("unable to convert geojson to polyline")
-        }
-
+                    do {
+                        let polyline = try self.converter.parseGeoJson(from: data)
+                        self.mapkitView?.add(polyline: polyline)
+                    } catch {
+                        print("unable to convert geojson to polyline")
+                    }
 #endif
-      case .failure(let error):
-        print("display error \(error)")
-      }
+                case .failure(let error):
+                    print("display error \(error)")
+                }
+            }
+        }
     }
-  }
 
 
 

@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F318B57287A820600D99F7F /* DataFetch in Frameworks */ = {isa = PBXBuildFile; productRef = 5F318B56287A820600D99F7F /* DataFetch */; };
+		5F318B59287A821400D99F7F /* DataFetch in Frameworks */ = {isa = PBXBuildFile; productRef = 5F318B58287A821400D99F7F /* DataFetch */; };
 		5F62C23728773BF200C56229 /* MapBoxMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F62C23628773BF200C56229 /* MapBoxMapView.swift */; };
-		5FA50024286A114A00CA71AA /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 5FA50023286A114A00CA71AA /* MapboxMaps */; };
 		5FC555B72878B78800A62E97 /* ServiceDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC555B62878B78800A62E97 /* ServiceDataSource.swift */; };
 		5FC555BA2878BE5100A62E97 /* MKMapKit+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC555B92878BE5100A62E97 /* MKMapKit+Helpers.swift */; };
 		5FC555BC2878BE7300A62E97 /* GeoJsonConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC555BB2878BE7300A62E97 /* GeoJsonConverter.swift */; };
@@ -19,7 +20,6 @@
 		5FC555E12878C25900A62E97 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC555E02878C25900A62E97 /* ActionViewController.swift */; };
 		5FC555E42878C25900A62E97 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FC555E22878C25900A62E97 /* MainInterface.storyboard */; };
 		5FC555E82878C25900A62E97 /* POSTGPXURLExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5FC555DA2878C25900A62E97 /* POSTGPXURLExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		5FC555EE2878C8C600A62E97 /* DataFetch in Frameworks */ = {isa = PBXBuildFile; productRef = 5FC555ED2878C8C600A62E97 /* DataFetch */; };
 		5FDCAB872869E85D00CCC37D /* GPXViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDCAB862869E85D00CCC37D /* GPXViewerApp.swift */; };
 		5FDCAB892869E85D00CCC37D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDCAB882869E85D00CCC37D /* ContentView.swift */; };
 		5FDCAB8B2869E86000CCC37D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FDCAB8A2869E86000CCC37D /* Assets.xcassets */; };
@@ -29,7 +29,6 @@
 		5FDCABA42869E86000CCC37D /* GPXViewerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDCABA32869E86000CCC37D /* GPXViewerUITestsLaunchTests.swift */; };
 		5FDCABB12869E8FE00CCC37D /* GPXTrackList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDCABB02869E8FE00CCC37D /* GPXTrackList.swift */; };
 		5FDCABB42869E99A00CCC37D /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDCABB32869E99A00CCC37D /* Track.swift */; };
-		5FDCABB72869EAD000CCC37D /* DataFetch in Frameworks */ = {isa = PBXBuildFile; productRef = 5FDCABB62869EAD000CCC37D /* DataFetch */; };
 		5FDCABBA2869EB7100CCC37D /* TrackRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDCABB92869EB7100CCC37D /* TrackRow.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +71,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5F318B55287A81F300D99F7F /* DataFetch */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DataFetch; path = ../../../thumbworks/DataFetch; sourceTree = "<group>"; };
 		5F62C23628773BF200C56229 /* MapBoxMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBoxMapView.swift; sourceTree = "<group>"; };
 		5FC555B62878B78800A62E97 /* ServiceDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDataSource.swift; sourceTree = "<group>"; };
 		5FC555B92878BE5100A62E97 /* MKMapKit+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapKit+Helpers.swift"; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FC555DC2878C25900A62E97 /* UniformTypeIdentifiers.framework in Frameworks */,
-				5FC555EE2878C8C600A62E97 /* DataFetch in Frameworks */,
+				5F318B59287A821400D99F7F /* DataFetch in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,8 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FA50024286A114A00CA71AA /* MapboxMaps in Frameworks */,
-				5FDCABB72869EAD000CCC37D /* DataFetch in Frameworks */,
+				5F318B57287A820600D99F7F /* DataFetch in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				5FDCAB852869E85D00CCC37D /* GPXViewer */,
+				5F318B55287A81F300D99F7F /* DataFetch */,
 				5FDCAB962869E86000CCC37D /* GPXViewerTests */,
 				5FDCABA02869E86000CCC37D /* GPXViewerUITests */,
 				5FC555DD2878C25900A62E97 /* POSTGPXURLExtension */,
@@ -263,7 +263,7 @@
 			);
 			name = POSTGPXURLExtension;
 			packageProductDependencies = (
-				5FC555ED2878C8C600A62E97 /* DataFetch */,
+				5F318B58287A821400D99F7F /* DataFetch */,
 			);
 			productName = POSTGPXURLExtension;
 			productReference = 5FC555DA2878C25900A62E97 /* POSTGPXURLExtension.appex */;
@@ -281,12 +281,12 @@
 			buildRules = (
 			);
 			dependencies = (
+				5F4BB9E3287A8033003B7673 /* PBXTargetDependency */,
 				5FC555E72878C25900A62E97 /* PBXTargetDependency */,
 			);
 			name = GPXViewer;
 			packageProductDependencies = (
-				5FDCABB62869EAD000CCC37D /* DataFetch */,
-				5FA50023286A114A00CA71AA /* MapboxMaps */,
+				5F318B56287A820600D99F7F /* DataFetch */,
 			);
 			productName = GPXViewer;
 			productReference = 5FDCAB832869E85D00CCC37D /* GPXViewer.app */;
@@ -364,8 +364,6 @@
 			);
 			mainGroup = 5FDCAB7A2869E85D00CCC37D;
 			packageReferences = (
-				5FDCABB52869EAD000CCC37D /* XCRemoteSwiftPackageReference "DataFetch" */,
-				5FDCABBB2869FF7D00CCC37D /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */,
 			);
 			productRefGroup = 5FDCAB842869E85D00CCC37D /* Products */;
 			projectDirPath = "";
@@ -461,6 +459,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5F4BB9E3287A8033003B7673 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 5F4BB9E2287A8033003B7673 /* DataFetch */;
+		};
 		5FC555E72878C25900A62E97 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5FC555D92878C25900A62E97 /* POSTGPXURLExtension */;
@@ -840,39 +842,17 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		5FDCABB52869EAD000CCC37D /* XCRemoteSwiftPackageReference "DataFetch" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:rodericj/DataFetch.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-		5FDCABBB2869FF7D00CCC37D /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:mapbox/mapbox-maps-ios.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		5FA50023286A114A00CA71AA /* MapboxMaps */ = {
+		5F318B56287A820600D99F7F /* DataFetch */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5FDCABBB2869FF7D00CCC37D /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */;
-			productName = MapboxMaps;
-		};
-		5FC555ED2878C8C600A62E97 /* DataFetch */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5FDCABB52869EAD000CCC37D /* XCRemoteSwiftPackageReference "DataFetch" */;
 			productName = DataFetch;
 		};
-		5FDCABB62869EAD000CCC37D /* DataFetch */ = {
+		5F318B58287A821400D99F7F /* DataFetch */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5FDCABB52869EAD000CCC37D /* XCRemoteSwiftPackageReference "DataFetch" */;
+			productName = DataFetch;
+		};
+		5F4BB9E2287A8033003B7673 /* DataFetch */ = {
+			isa = XCSwiftPackageProductDependency;
 			productName = DataFetch;
 		};
 /* End XCSwiftPackageProductDependency section */

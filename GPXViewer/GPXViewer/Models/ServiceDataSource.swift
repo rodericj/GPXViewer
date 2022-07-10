@@ -25,7 +25,9 @@ class ServiceDataSource: ObservableObject {
     }
 
     func fetchGeojson(for track: Track, completion: @escaping (Result<Data, Error>) -> ()) throws {
-        guard let url = URL(string: "http://localhost:8080/tracks/\(track.id)/geojson") else {
+        let host = "https://38e2dda5cbac.ngrok.io/tracks/\(track.id)/geojson"
+//        let host = "http://localhost:8080/tracks/\(track.id)/geojson"
+        guard let url = URL(string: host) else {
             throw LoadingError.invalidURL
         }
 
@@ -48,19 +50,22 @@ class ServiceDataSource: ObservableObject {
         }
     }
     func fetch() {
-        guard let url = URL(string: "http://localhost:8080/tracks") else {
+        let host = "https://38e2dda5cbac.ngrok.io/tracks"
+//        let host = "http://localhost:8080/tracks"
+        guard let url = URL(string: host) else {
             return
         }
         fetcher.fetch(from: url, type: TracksPayload.self) { tracks in
-            switch tracks {
+            DispatchQueue.main.async {
+                switch tracks {
 
-            case .success(let payload):
-                DispatchQueue.main.async {
+                case .success(let payload):
                     self.trackState = .loaded(payload.items)
+
+                case .failure(let error):
+                    self.trackState = .error(error)
+                    print("error \(error)")
                 }
-            case .failure(let error):
-                self.trackState = .error(error)
-                print("error \(error)")
             }
         }
     }

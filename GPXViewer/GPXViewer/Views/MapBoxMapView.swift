@@ -1,6 +1,4 @@
-
 import SwiftUI
-import MapboxMaps
 import MapKit
 
 class MapViewDelegate: NSObject, MKMapViewDelegate {

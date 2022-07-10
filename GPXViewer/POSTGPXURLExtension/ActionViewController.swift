@@ -24,7 +24,7 @@ class ActionViewController: UIViewController {
         // Replace this with something appropriate for the type[s] your extension supports.
         print("inputItems: ", self.extensionContext!.inputItems)
         for item in self.extensionContext!.inputItems as! [NSExtensionItem] {
-            print("attachments: ", item.attachments)
+            print("attachments: ", item.attachments ?? "No attachments")
             for provider in item.attachments! {
 
                 if provider.hasItemConformingToTypeIdentifier(UTType.fileURL.identifier) {
@@ -42,27 +42,28 @@ class ActionViewController: UIViewController {
                                 return
                             }
 
-                            var request = URLRequest(url: URL(string: "https://38e2dda5cbac.ngrok.io/upload?key=gaia.gpx")!)
-                            request.httpMethod = "POST"
+                            guard let url = URL(string: "https://38e2dda5cbac.ngrok.io/upload?key=gaia.gpx") else {
+                                print("invalid URL")
+                                return
+                            }
 
+                            guard let body = try? Data(contentsOf: dataURL) else {
+                                print("invalid body")
+                                return
+                            }
                             do {
-                                request.httpBody = try Data(contentsOf: dataURL)
+                                try self.fetcher.post(from: url, body: body) { result in
+                                    switch result {
+                                    case .success(let successThing):
+                                        print(successThing)
+                                    case .failure(let error):
+                                        print(error)
+                                    }
+                                }
                             } catch {
-                                print("could not set body")
+                                print("an error occured when posting \(error)")
                             }
 
-                            let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                                if let error = error {
-                                    print("error posting \(error)")
-                                }
-                                if let data = data {
-                                    print("some kind of data came back \(data)")
-                                }
-                                if let response = response {
-                                    print("we got a response \(response)")
-                                }
-                            }
-                            task.resume()
                             //                        OperationQueue.main.addOperation {
                             //                            if let strongImageView = weakImageView {
                             //                                if let imageURL = imageURL as? URL {

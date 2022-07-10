@@ -1,3 +1,5 @@
+#if USEMAPBOX
+
 import MapboxMaps
 
 extension MapView {
@@ -61,3 +63,4 @@ struct GeoJsonResponse: Codable {
   var type: String = "FeatureCollection"
   let features: [Feature]
 }
+#endif
