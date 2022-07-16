@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5F318B57287A820600D99F7F /* DataFetch in Frameworks */ = {isa = PBXBuildFile; productRef = 5F318B56287A820600D99F7F /* DataFetch */; };
-		5F318B59287A821400D99F7F /* DataFetch in Frameworks */ = {isa = PBXBuildFile; productRef = 5F318B58287A821400D99F7F /* DataFetch */; };
 		5F62C23728773BF200C56229 /* MapBoxMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F62C23628773BF200C56229 /* MapBoxMapView.swift */; };
+		5FB23E412882F82300252E18 /* DataFetch in Frameworks */ = {isa = PBXBuildFile; productRef = 5FB23E402882F82300252E18 /* DataFetch */; };
 		5FC555B72878B78800A62E97 /* ServiceDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC555B62878B78800A62E97 /* ServiceDataSource.swift */; };
 		5FC555BA2878BE5100A62E97 /* MKMapKit+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC555B92878BE5100A62E97 /* MKMapKit+Helpers.swift */; };
 		5FC555BC2878BE7300A62E97 /* GeoJsonConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC555BB2878BE7300A62E97 /* GeoJsonConverter.swift */; };
@@ -105,7 +105,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FC555DC2878C25900A62E97 /* UniformTypeIdentifiers.framework in Frameworks */,
-				5F318B59287A821400D99F7F /* DataFetch in Frameworks */,
+				5FB23E412882F82300252E18 /* DataFetch in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,7 +263,7 @@
 			);
 			name = POSTGPXURLExtension;
 			packageProductDependencies = (
-				5F318B58287A821400D99F7F /* DataFetch */,
+				5FB23E402882F82300252E18 /* DataFetch */,
 			);
 			productName = POSTGPXURLExtension;
 			productReference = 5FC555DA2878C25900A62E97 /* POSTGPXURLExtension.appex */;
@@ -847,11 +847,11 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = DataFetch;
 		};
-		5F318B58287A821400D99F7F /* DataFetch */ = {
+		5F4BB9E2287A8033003B7673 /* DataFetch */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DataFetch;
 		};
-		5F4BB9E2287A8033003B7673 /* DataFetch */ = {
+		5FB23E402882F82300252E18 /* DataFetch */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DataFetch;
 		};
