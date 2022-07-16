@@ -18,8 +18,8 @@ struct GPXTrackList: View {
                     TrackRow(track: track)
                         .cornerRadius(10)
                 }.onDelete(perform: trackStore.delete)
-
             }
+            .listStyle(InsetGroupedListStyle())
         case .loading:
             Text("Loading")
         case .error(let error):
