@@ -14,8 +14,11 @@ struct GPXTrackList: View {
         switch(trackStore.trackState) {
         case .loaded(let tracks):
             List(tracks) { track in
-                TrackRow(track: track)
-                    .cornerRadius(10)
+                ForEach(tracks, id: \.self) { track in
+                    TrackRow(track: track)
+                        .cornerRadius(10)
+                }.onDelete(perform: trackStore.delete)
+
             }
         case .loading:
             Text("Loading")

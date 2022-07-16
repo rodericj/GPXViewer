@@ -14,9 +14,9 @@ enum TrackState {
 }
 
 struct ServiceConfig {
-    let host: String// = "localhost"
-    let port: Int// = 8080
-    let scheme: String// = "http"
+    let host: String
+    let port: Int?
+    let scheme: String
 }
 enum Service {
     case local
@@ -26,7 +26,9 @@ enum Service {
         var c = URLComponents()
         c.host = config.host
         c.scheme = config.scheme
-        c.port = config.port
+        if let port = config.port {
+            c.port = port
+        }
         return c.url
     }
     var config: ServiceConfig {
@@ -34,13 +36,13 @@ enum Service {
         case .local:
             return ServiceConfig(host: "localhost", port: 8080, scheme: "http")
         case .ngrok:
-            return ServiceConfig(host: "38e2dda5cbac.ngrok.io", port: 80, scheme: "https")
+            return ServiceConfig(host: "ffea4db4dab4.ngrok.io", port: nil, scheme: "https")
         }
     }
 }
 
 class ServiceDataSource: ObservableObject {
-    let service: Service = .local
+    let service: Service = .ngrok
 
     struct TracksPayload: Decodable {
         let items: [Track]
@@ -51,6 +53,36 @@ class ServiceDataSource: ObservableObject {
     private let fetcher = DataFetcher()
     init() {
         trackState = .loading
+    }
+
+    func delete(atOffsets: IndexSet) {
+        switch trackState {
+        case .loaded(let array):
+            do {
+                try atOffsets.forEach { index in
+                    let track = array[index]
+                    guard let serviceURL = service.url else {
+                        throw LoadingError.invalidURL
+                    }
+                    let url = serviceURL.appendingPathComponent("tracks").appendingPathComponent(track.id.uuidString)
+                    try fetcher.delete(from: url) { result in
+                        switch result {
+                        case .success(let response):
+                            print("successfully deleted, maybe delete this one from the array")
+                            
+                        case .failure(let error):
+                            print("failed to delete, i show some kind of error i guess \(error)")
+                        }
+                    }
+                }
+            } catch {
+                print("error \(error)")
+            }
+        case .loading:
+            break
+        case .error(let error):
+            break
+        }
     }
 
     func fetchGeojson(for track: Track, completion: @escaping (Result<Data, Error>) -> ()) throws {
