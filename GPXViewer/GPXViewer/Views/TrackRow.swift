@@ -35,7 +35,13 @@ struct TrackRow: View {
                 track: track,
                 trackStore: trackStore
             )
-            .frame(width: nil, height: 300, alignment: .center)
+            .frame(
+                width: nil,
+                height: 300,
+                alignment: .center
+            )
+            .cornerRadius(10)
+
         }
     }
 }

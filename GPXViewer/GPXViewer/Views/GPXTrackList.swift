@@ -16,7 +16,6 @@ struct GPXTrackList: View {
             List(tracks) { track in
                 ForEach(tracks, id: \.self) { track in
                     TrackRow(track: track)
-                        .cornerRadius(10)
                 }.onDelete(perform: trackStore.delete)
             }
             .listStyle(InsetGroupedListStyle())
