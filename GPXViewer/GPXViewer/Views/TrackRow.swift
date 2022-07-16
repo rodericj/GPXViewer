@@ -71,8 +71,10 @@ struct TrackRow_Previews: PreviewProvider {
     }()
 
     static var previews: some View {
-        TrackRow(track: Track())
-            .environmentObject(serviceDataSource)
+        ForEach(ColorScheme.allCases, id: \.self) {
+            TrackRow(track: Track())
+                .environmentObject(serviceDataSource).preferredColorScheme($0)
+        }
     }
 }
 

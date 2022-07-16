@@ -18,7 +18,7 @@ struct GPXTrackList: View {
                     TrackRow(track: track)
                 }.onDelete(perform: trackStore.delete)
             }
-            .listStyle(InsetGroupedListStyle())
+            .listStyle(GroupedListStyle())
         case .loading:
             Text("Loading")
         case .error(let error):
@@ -49,7 +49,9 @@ struct GPXTrackList_Previews: PreviewProvider {
         return serviceDataSource
     }()
     static var previews: some View {
-        GPXTrackList().environmentObject(serviceDataSource)
+        ForEach(ColorScheme.allCases, id: \.self) {
+            GPXTrackList().environmentObject(serviceDataSource).preferredColorScheme($0)
+        }
     }
 }
 
