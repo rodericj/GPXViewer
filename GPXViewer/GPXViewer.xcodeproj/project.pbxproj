@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		5F318B57287A820600D99F7F /* DataFetch in Frameworks */ = {isa = PBXBuildFile; productRef = 5F318B56287A820600D99F7F /* DataFetch */; };
 		5F62C23728773BF200C56229 /* MapBoxMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F62C23628773BF200C56229 /* MapBoxMapView.swift */; };
+		5F9C1B062884484D007C6E90 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9C1B052884484D007C6E90 /* LoginView.swift */; };
+		5FB214042884BB4B000B12E1 /* Keychain in Frameworks */ = {isa = PBXBuildFile; productRef = 5FB214032884BB4B000B12E1 /* Keychain */; };
+		5FB214082884BB92000B12E1 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB214072884BB92000B12E1 /* KeychainManager.swift */; };
 		5FB23E412882F82300252E18 /* DataFetch in Frameworks */ = {isa = PBXBuildFile; productRef = 5FB23E402882F82300252E18 /* DataFetch */; };
 		5FC555B72878B78800A62E97 /* ServiceDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC555B62878B78800A62E97 /* ServiceDataSource.swift */; };
 		5FC555BA2878BE5100A62E97 /* MKMapKit+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC555B92878BE5100A62E97 /* MKMapKit+Helpers.swift */; };
@@ -73,6 +76,8 @@
 /* Begin PBXFileReference section */
 		5F318B55287A81F300D99F7F /* DataFetch */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DataFetch; path = ../../../thumbworks/DataFetch; sourceTree = "<group>"; };
 		5F62C23628773BF200C56229 /* MapBoxMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBoxMapView.swift; sourceTree = "<group>"; };
+		5F9C1B052884484D007C6E90 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		5FB214072884BB92000B12E1 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		5FC555B62878B78800A62E97 /* ServiceDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDataSource.swift; sourceTree = "<group>"; };
 		5FC555B92878BE5100A62E97 /* MKMapKit+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapKit+Helpers.swift"; sourceTree = "<group>"; };
 		5FC555BB2878BE7300A62E97 /* GeoJsonConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoJsonConverter.swift; sourceTree = "<group>"; };
@@ -113,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FB214042884BB4B000B12E1 /* Keychain in Frameworks */,
 				5F318B57287A820600D99F7F /* DataFetch in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,6 +154,7 @@
 				5FC555B92878BE5100A62E97 /* MKMapKit+Helpers.swift */,
 				5FC555BB2878BE7300A62E97 /* GeoJsonConverter.swift */,
 				5FC555BF2878BF7D00A62E97 /* MapView+Helpers.swift */,
+				5FB214072884BB92000B12E1 /* KeychainManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -238,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				5FDCAB882869E85D00CCC37D /* ContentView.swift */,
+				5F9C1B052884484D007C6E90 /* LoginView.swift */,
 				5F62C23628773BF200C56229 /* MapBoxMapView.swift */,
 				5FC555C12878C01600A62E97 /* MapViewController.swift */,
 				5FDCABB02869E8FE00CCC37D /* GPXTrackList.swift */,
@@ -287,6 +295,7 @@
 			name = GPXViewer;
 			packageProductDependencies = (
 				5F318B56287A820600D99F7F /* DataFetch */,
+				5FB214032884BB4B000B12E1 /* Keychain */,
 			);
 			productName = GPXViewer;
 			productReference = 5FDCAB832869E85D00CCC37D /* GPXViewer.app */;
@@ -364,6 +373,7 @@
 			);
 			mainGroup = 5FDCAB7A2869E85D00CCC37D;
 			packageReferences = (
+				5FB214022884BB4B000B12E1 /* XCRemoteSwiftPackageReference "Keychain.swift" */,
 			);
 			productRefGroup = 5FDCAB842869E85D00CCC37D /* Products */;
 			projectDirPath = "";
@@ -425,12 +435,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FB214082884BB92000B12E1 /* KeychainManager.swift in Sources */,
 				5FC555C22878C01600A62E97 /* MapViewController.swift in Sources */,
 				5FDCABBA2869EB7100CCC37D /* TrackRow.swift in Sources */,
 				5FC555C02878BF7D00A62E97 /* MapView+Helpers.swift in Sources */,
 				5FDCAB892869E85D00CCC37D /* ContentView.swift in Sources */,
 				5F62C23728773BF200C56229 /* MapBoxMapView.swift in Sources */,
 				5FC555B72878B78800A62E97 /* ServiceDataSource.swift in Sources */,
+				5F9C1B062884484D007C6E90 /* LoginView.swift in Sources */,
 				5FDCAB872869E85D00CCC37D /* GPXViewerApp.swift in Sources */,
 				5FC555BA2878BE5100A62E97 /* MKMapKit+Helpers.swift in Sources */,
 				5FDCABB12869E8FE00CCC37D /* GPXTrackList.swift in Sources */,
@@ -842,6 +854,17 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		5FB214022884BB4B000B12E1 /* XCRemoteSwiftPackageReference "Keychain.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:GroupeMINASTE/Keychain.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		5F318B56287A820600D99F7F /* DataFetch */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -850,6 +873,11 @@
 		5F4BB9E2287A8033003B7673 /* DataFetch */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DataFetch;
+		};
+		5FB214032884BB4B000B12E1 /* Keychain */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5FB214022884BB4B000B12E1 /* XCRemoteSwiftPackageReference "Keychain.swift" */;
+			productName = Keychain;
 		};
 		5FB23E402882F82300252E18 /* DataFetch */ = {
 			isa = XCSwiftPackageProductDependency;

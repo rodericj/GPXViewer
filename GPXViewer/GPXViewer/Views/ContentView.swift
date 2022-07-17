@@ -1,17 +1,14 @@
-//
-//  ContentView.swift
-//  GPXViewer
-//
-//  Created by Roderic Campbell on 6/27/22.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject private var dataSource: ServiceDataSource
     var body: some View {
         NavigationView {
             GPXTrackList()
                 .navigationTitle("Routes")
+        }
+        .sheet(isPresented: $dataSource.showingLoginSheet) {
+            LoginView()
         }
     }
 }
