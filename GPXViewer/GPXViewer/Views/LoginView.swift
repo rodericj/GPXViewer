@@ -1,17 +1,12 @@
 import SwiftUI
 
-class AccountViewState: ObservableObject {
-    @Published var hasAccount = true
-}
-
 struct LoginView: View {
     @EnvironmentObject var trackStore: ServiceDataSource
-    @ObservedObject private var accountState: AccountViewState = AccountViewState()
     var body: some View {
-        if accountState.hasAccount {
-            ExistingUserLoginView(accountState: accountState)
+        if trackStore.hasAccount {
+            ExistingUserLoginView()
         } else {
-            NewUserSignUpView(accountState: accountState)
+            NewUserSignUpView()
         }
     }
 }
@@ -20,7 +15,6 @@ struct ExistingUserLoginView: View {
 
     @State private var emailAddress: String = ""
     @State private var password: String = ""
-    @ObservedObject var accountState: AccountViewState
     var body: some View {
         VStack {
             LoginViewHeader(text: "Welcome Back!")
@@ -36,7 +30,7 @@ struct ExistingUserLoginView: View {
             Spacer()
             Text("Don't have a login?")
             Button("Sign up") {
-                accountState.hasAccount = false
+                trackStore.hasAccount = false
             }
         }
         .padding()
@@ -94,7 +88,6 @@ struct NewUserSignUpView: View {
     @State private var emailAddress: String = ""
     @State private var password: String = ""
     @State private var confirmPassword: String = ""
-    @ObservedObject var accountState: AccountViewState
     var body: some View {
         VStack {
             LoginViewHeader(text: "Welcome!")
@@ -120,7 +113,7 @@ struct NewUserSignUpView: View {
             Spacer()
             Text("Already have a login?")
             Button("Log in") {
-                accountState.hasAccount = true
+                trackStore.hasAccount = true
             }
         }
         .padding()

@@ -81,6 +81,7 @@ class ServiceDataSource: ObservableObject {
     struct TracksPayload: Decodable {
         let items: [Track]
     }
+    @Published var hasAccount = true
     @Published var trackState: TrackState
     @Published var trackData: [UUID : Data] = [:]
     @Published var showingLoginSheet: Bool
@@ -223,6 +224,7 @@ class ServiceDataSource: ObservableObject {
                 print("successfully created a user")
                 self.handle(response: response)
                 // TODO show the login view now
+
             case .failure(let error):
                 print("we got an error signing up \(error)")
                 if case FetchError.badRequest(let string) = error {
@@ -245,6 +247,9 @@ class ServiceDataSource: ObservableObject {
 
     private func handle(response: SignupResponseBody) {
         print("do we need to check the cookies or something? ")
+        DispatchQueue.main.async {
+            self.hasAccount = true
+        }
     }
 
     func login(email: String?, password: String?) throws {
