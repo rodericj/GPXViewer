@@ -13,6 +13,9 @@ struct KeychainManager {
         keychain.save(value, forKey: key)
     }
 
+    func value(for key: String) -> String? {
+        keychain.value(forKey: key) as? String
+    }
     func clear(key: String) -> Bool {
         keychain.remove(forKey: key)
     }

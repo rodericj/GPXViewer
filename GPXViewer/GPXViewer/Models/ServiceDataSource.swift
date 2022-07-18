@@ -56,11 +56,14 @@ class ServiceDataSource: ObservableObject {
     }
     @Published var trackState: TrackState
     @Published var trackData: [UUID : Data] = [:]
-    @Published var showingLoginSheet = true
+    @Published var showingLoginSheet: Bool
 
     private let fetcher = DataFetcher()
     init() {
         trackState = .loading
+        let token = keychain.value(for: ServiceDataSource.tokenKey)
+        showingLoginSheet = token == nil
+        fetcher.bearerToken = token
     }
 
     func delete(atOffsets: IndexSet) {
