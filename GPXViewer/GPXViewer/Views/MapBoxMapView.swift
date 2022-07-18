@@ -34,6 +34,6 @@ struct MapBoxMapView: UIViewControllerRepresentable {
   }
   
   func updateUIViewController(_ uiViewController: MapViewController, context: Context) {
-    print("update ui view \(context)")
+    print("update ui view")
   }
 }

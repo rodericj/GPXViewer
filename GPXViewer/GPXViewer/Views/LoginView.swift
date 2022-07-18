@@ -5,6 +5,7 @@ class AccountViewState: ObservableObject {
 }
 
 struct LoginView: View {
+    @EnvironmentObject var trackStore: ServiceDataSource
     @ObservedObject private var accountState: AccountViewState = AccountViewState()
     var body: some View {
         if accountState.hasAccount {
@@ -23,16 +24,8 @@ struct ExistingUserLoginView: View {
     var body: some View {
         VStack {
             LoginViewHeader(text: "Welcome Back!")
-            TextField("Email Address", text: $emailAddress)
-                .padding()
-                .background(Color.gray.opacity(0.1))
-                .cornerRadius(5.0)
-                .padding(.bottom, 20)
-            SecureField("Password", text: $password)
-                .padding()
-                .background(Color.gray.opacity(0.1))
-                .cornerRadius(5.0)
-                .padding(.bottom, 20)
+            MyTextField(placeholder: "Email Address", textValue: $emailAddress, type: .emailAddress)
+            MyTextField(placeholder: "Password", textValue: $password, type: .password)
             Button("Login") {
                 do {
                     try trackStore.login(email: "cool@exampleromaw.com", password: "secret42")
@@ -67,9 +60,37 @@ struct LoginViewHeader: View {
     }
 }
 
+struct MyTextField: View {
+    let placeholder: String
+    @Binding var textValue: String
+    let type: UITextContentType
+    var isSecure: Bool {
+        type == .password || type == .newPassword
+    }
+
+    var body: some View {
+        if isSecure {
+            SecureField(placeholder, text: $textValue)
+                .textContentType(type)
+                .padding()
+                .background(Color.gray.opacity(0.1))
+                .cornerRadius(5.0)
+                .padding(.bottom, 20)
+        } else {
+            TextField(placeholder, text: $textValue)
+                .textContentType(type)
+                .padding()
+                .background(Color.gray.opacity(0.1))
+                .cornerRadius(5.0)
+                .padding(.bottom, 20)
+        }
+    }
+}
+
 struct NewUserSignUpView: View {
     @EnvironmentObject var trackStore: ServiceDataSource
 
+    @State private var name: String = ""
     @State private var emailAddress: String = ""
     @State private var password: String = ""
     @State private var confirmPassword: String = ""
@@ -77,23 +98,24 @@ struct NewUserSignUpView: View {
     var body: some View {
         VStack {
             LoginViewHeader(text: "Welcome!")
-            TextField("Email Address", text: $emailAddress)
-                .padding()
-                .background(Color.gray.opacity(0.1))
-                .cornerRadius(5.0)
-                .padding(.bottom, 20)
-            SecureField("Password", text: $password)
-                .padding()
-                .background(Color.gray.opacity(0.1))
-                .cornerRadius(5.0)
-                .padding(.bottom, 20)
-            SecureField("Confirm Password", text: $confirmPassword)
-                .padding()
-                .background(Color.gray.opacity(0.1))
-                .cornerRadius(5.0)
-                .padding(.bottom, 20)
+            MyTextField(placeholder: "Name", textValue: $name, type: .name)
+            MyTextField(placeholder: "Email Address", textValue: $emailAddress, type: .emailAddress)
+            MyTextField(placeholder: "Password", textValue: $password, type: .password)
+            MyTextField(placeholder: "Confirm Password", textValue: $confirmPassword, type: .password)
+            if (trackStore.loginErrorString != nil) {
+                Text("some error").foregroundColor(.red)
+            }
             Button("Sign up") {
-                print("now log in")
+                do {
+                    try trackStore.signUp(
+                        name: name,
+                        email: emailAddress,
+                        password: password,
+                        confirmPassword: confirmPassword
+                    )
+                } catch {
+                    print("Error setting up the login request \(error)")
+                }
             }
             Spacer()
             Text("Already have a login?")
