@@ -34,9 +34,8 @@ struct ExistingUserLoginView: View {
                 .cornerRadius(5.0)
                 .padding(.bottom, 20)
             Button("Login") {
-                print(accountState)
                 do {
-                try trackStore.login(email: "cool@exampleromaw.com", password: "secret42")
+                    try trackStore.login(email: "cool@exampleromaw.com", password: "secret42")
                 } catch {
                     print("Error setting up the login request \(error)")
                 }

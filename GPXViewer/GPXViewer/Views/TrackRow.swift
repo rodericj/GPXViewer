@@ -38,8 +38,8 @@ struct TrackRow: View {
             .frame(height: 300)
             .cornerRadius(10)
             .shadow(
-                color: Color.secondary,
-                radius: 10,
+                color: Color.black,
+                radius:  10,
                 x: 5,
                 y: 5)
             .padding(.init(top: 0, leading: 0, bottom: 20, trailing: 0))
