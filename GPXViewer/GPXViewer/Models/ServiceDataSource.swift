@@ -170,7 +170,7 @@ class ServiceDataSource: ObservableObject {
             case .success(let loginResponseData):
                 print("we got some data from login", loginResponseData.user.id, loginResponseData.value)
                 // store the value in the keychain
-                self.fetcher.bearerToken = ServiceDataSource.tokenKey
+                self.fetcher.bearerToken = loginResponseData.value
                 self.keychain.set(value: loginResponseData.value, for: ServiceDataSource.tokenKey)
                 DispatchQueue.main.async {
                     self.showingLoginSheet = false
