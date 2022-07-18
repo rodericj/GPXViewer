@@ -1,13 +1,13 @@
 import DataFetch
 import SwiftUI
 
-enum LoadingError: Error { // TODO rename this to match the growing scope of the Service
+enum ServiceError: Error {
     case invalidURL
-    case noGeometryDetected
-    case notAPolyline
     case invalidEmail
     case invalidPassword
+    case invalidConfirmPassword
     case invalidURLConfiguration
+    case passwordsMustMatch
     case unableToConvertTobase64String
 }
 
@@ -87,7 +87,7 @@ class ServiceDataSource: ObservableObject {
                 try atOffsets.forEach { index in
                     let track = array[index]
                     guard let serviceURL = service.url else {
-                        throw LoadingError.invalidURL
+                        throw ServiceError.invalidURL
                     }
                     let url = serviceURL.appendingPathComponent("tracks").appendingPathComponent(track.id.uuidString)
                     trackData[track.id] = nil
@@ -116,7 +116,7 @@ class ServiceDataSource: ObservableObject {
 
     func fetchGeojson(for track: Track, completion: @escaping (Result<Data, Error>) -> ()) throws {
         guard let url = service.url?.appendingPathComponent("tracks/\(track.id)/geojson") else {
-            throw LoadingError.invalidURL
+            throw ServiceError.invalidURL
         }
 
         if let cachedData = trackData[track.id] {
@@ -167,13 +167,13 @@ class ServiceDataSource: ObservableObject {
     
     func login(email: String?, password: String?) throws {
         guard let email = email else {
-            throw LoadingError.invalidEmail
+            throw ServiceError.invalidEmail
         }
         guard let password = password else {
-            throw LoadingError.invalidPassword
+            throw ServiceError.invalidPassword
         }
         guard let url = service.url?.appendingPathComponent("login") else {
-            throw LoadingError.invalidURLConfiguration
+            throw ServiceError.invalidURLConfiguration
         }
 
         struct Response: Codable {
@@ -185,7 +185,7 @@ class ServiceDataSource: ObservableObject {
         }
 
         guard let base64EncodedParameters = "\(email.lowercased()):\(password)".data(using: .utf8)?.base64EncodedString() else {
-            throw LoadingError.unableToConvertTobase64String
+            throw ServiceError.unableToConvertTobase64String
         }
         let headers: [String: String] = ["Authorization": "Basic  \(base64EncodedParameters)"]
         try fetcher.post(from: url, body: "", headers: headers, responseType: Response.self) { result in
