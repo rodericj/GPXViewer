@@ -6,6 +6,18 @@ struct ContentView: View {
         NavigationView {
             GPXTrackList()
                 .navigationTitle("Routes")
+                .toolbar {
+                    if dataSource.hasAuthToken {
+                        Button("Log Out") {
+                            dataSource.logout()
+                        }
+                    } else {
+                        Button("Log In") {
+                            print("Do the login flow")
+                            dataSource.showingLoginSheet = true
+                        }
+                    }
+                }
         }
         .sheet(isPresented: $dataSource.showingLoginSheet) {
             LoginView()

@@ -69,12 +69,14 @@ class ServiceDataSource: ObservableObject {
     @Published var trackState: TrackState
     @Published var trackData: [UUID : Data] = [:]
     @Published var showingLoginSheet: Bool
+    @Published var hasAuthToken: Bool
 
     private let fetcher = DataFetcher()
     init() {
         trackState = .loading
         let token = keychain.value(for: ServiceDataSource.tokenKey)
         showingLoginSheet = token == nil
+        hasAuthToken = token != nil
         fetcher.bearerToken = token
     }
 
@@ -97,6 +99,7 @@ class ServiceDataSource: ObservableObject {
                             
                         case .failure(let error):
                             print("failed to delete, i show some kind of error i guess \(error)")
+                            self.fetch()
                         }
                     }
                 }
@@ -156,8 +159,12 @@ class ServiceDataSource: ObservableObject {
     }
 
     func logout() {
-        keychain.clear(key: ServiceDataSource.tokenKey)
+        _ = keychain.clear(key: ServiceDataSource.tokenKey)
+        hasAuthToken = false
+        fetcher.bearerToken = nil
+        fetcher.deleteCookie(named: "vapor-session")
     }
+    
     func login(email: String?, password: String?) throws {
         guard let email = email else {
             throw LoadingError.invalidEmail
@@ -188,7 +195,8 @@ class ServiceDataSource: ObservableObject {
                 print("we got some data from login", loginResponseData.user.id, loginResponseData.value)
                 // store the value in the keychain
                 self.fetcher.bearerToken = loginResponseData.value
-                self.keychain.set(value: loginResponseData.value, for: ServiceDataSource.tokenKey)
+                self.hasAuthToken = true
+                _ = self.keychain.set(value: loginResponseData.value, for: ServiceDataSource.tokenKey)
                 DispatchQueue.main.async {
                     self.showingLoginSheet = false
                 }
