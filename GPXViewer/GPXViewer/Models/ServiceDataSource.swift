@@ -15,6 +15,18 @@ enum TrackState {
     case loaded([Track])
     case loading
     case error(Error)
+
+    func delete(track: Track) -> TrackState {
+        let deletedTrack = track
+        switch self {
+        case .loaded(let tracks):
+            return .loaded(tracks.filter({ track in
+                deletedTrack != track
+            }))
+        default:
+            return self
+        }
+    }
 }
 
 struct ServiceConfig {
@@ -76,6 +88,8 @@ class ServiceDataSource: ObservableObject {
                         throw LoadingError.invalidURL
                     }
                     let url = serviceURL.appendingPathComponent("tracks").appendingPathComponent(track.id.uuidString)
+                    trackData[track.id] = nil
+                    trackState = trackState.delete(track: track)
                     try fetcher.delete(from: url) { result in
                         switch result {
                         case .success(let response):
